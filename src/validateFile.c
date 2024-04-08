@@ -10,16 +10,10 @@ int validateFile(int argc, char **argv){
         printf("Please enter a file directory without spaces!\n");
         return 0;
     }
-    if(fopen(argv[1], "r") == NULL){
+    if(fopen(argv[1], "r") == NULL) {
         printf("File doesn't exist!\n");
         return 0;
     }
-
-    int res = system("dir");
-    printf("\n%d\n\n", res);
-    //char *file_search_sys_command = "FILE" +
-    //printf("\n%s\n\n", system("FILE %s", argv[1]))
-
     return 1;
 }
 
