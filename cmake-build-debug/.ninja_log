@@ -1,0 +1,5 @@
+# ninja log v5
+0	43	1712582142756264610	CMakeFiles/scan_eml.dir/src/main.c.o	da1c410db159a6db
+1	100	1712595871218447366	build.ninja	a51bc5abf096addd
+55	96	1712582739885086825	scan_eml	daea22bd6040f79
+0	55	1712582739845086303	CMakeFiles/scan_eml.dir/src/validateFile.c.o	5b2e914b7121f7dd
