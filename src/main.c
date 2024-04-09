@@ -7,12 +7,7 @@ int main(int argc, char **argv) {
         return 0;
     }
 
-    FILE *fptr;
-    fptr = fopen(argv[1], "r");
-
-    searchFile(fptr);
-
-    fclose(fptr);
+    searchFile(argv[1]);
 
     return 0;
 }

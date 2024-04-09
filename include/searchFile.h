@@ -3,6 +3,6 @@
 
 #include <stdio.h>
 
-void searchFile(FILE *fp);
+void searchFile(char *dir);
 
 #endif //SCAN_EML_SEARCHFILE_H
