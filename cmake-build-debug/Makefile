@@ -152,53 +152,53 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/main.c.s
 .PHONY : src/main.c.s
 
-src/validateFile.obj: src/validateFile.c.obj
-.PHONY : src/validateFile.obj
+src/utils/validateFile.obj: src/utils/validateFile.c.obj
+.PHONY : src/utils/validateFile.obj
 
 # target to build an object file
-src/validateFile.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/validateFile.c.obj
-.PHONY : src/validateFile.c.obj
+src/utils/validateFile.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj
+.PHONY : src/utils/validateFile.c.obj
 
-src/validateFile.i: src/validateFile.c.i
-.PHONY : src/validateFile.i
+src/utils/validateFile.i: src/utils/validateFile.c.i
+.PHONY : src/utils/validateFile.i
 
 # target to preprocess a source file
-src/validateFile.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/validateFile.c.i
-.PHONY : src/validateFile.c.i
+src/utils/validateFile.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/utils/validateFile.c.i
+.PHONY : src/utils/validateFile.c.i
 
-src/validateFile.s: src/validateFile.c.s
-.PHONY : src/validateFile.s
+src/utils/validateFile.s: src/utils/validateFile.c.s
+.PHONY : src/utils/validateFile.s
 
 # target to generate assembly for a file
-src/validateFile.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/validateFile.c.s
-.PHONY : src/validateFile.c.s
+src/utils/validateFile.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/utils/validateFile.c.s
+.PHONY : src/utils/validateFile.c.s
 
-src/validatePesel.obj: src/validatePesel.c.obj
-.PHONY : src/validatePesel.obj
+src/utils/validatePesel.obj: src/utils/validatePesel.c.obj
+.PHONY : src/utils/validatePesel.obj
 
 # target to build an object file
-src/validatePesel.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/validatePesel.c.obj
-.PHONY : src/validatePesel.c.obj
+src/utils/validatePesel.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.obj
+.PHONY : src/utils/validatePesel.c.obj
 
-src/validatePesel.i: src/validatePesel.c.i
-.PHONY : src/validatePesel.i
+src/utils/validatePesel.i: src/utils/validatePesel.c.i
+.PHONY : src/utils/validatePesel.i
 
 # target to preprocess a source file
-src/validatePesel.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/validatePesel.c.i
-.PHONY : src/validatePesel.c.i
+src/utils/validatePesel.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.i
+.PHONY : src/utils/validatePesel.c.i
 
-src/validatePesel.s: src/validatePesel.c.s
-.PHONY : src/validatePesel.s
+src/utils/validatePesel.s: src/utils/validatePesel.c.s
+.PHONY : src/utils/validatePesel.s
 
 # target to generate assembly for a file
-src/validatePesel.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/validatePesel.c.s
-.PHONY : src/validatePesel.c.s
+src/utils/validatePesel.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.s
+.PHONY : src/utils/validatePesel.c.s
 
 # Help Target
 help:
@@ -212,12 +212,12 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
-	@echo ... src/validateFile.obj
-	@echo ... src/validateFile.i
-	@echo ... src/validateFile.s
-	@echo ... src/validatePesel.obj
-	@echo ... src/validatePesel.i
-	@echo ... src/validatePesel.s
+	@echo ... src/utils/validateFile.obj
+	@echo ... src/utils/validateFile.i
+	@echo ... src/utils/validateFile.s
+	@echo ... src/utils/validatePesel.obj
+	@echo ... src/utils/validatePesel.i
+	@echo ... src/utils/validatePesel.s
 .PHONY : help
 
 

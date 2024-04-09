@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/validateFile.h"
+#include "../../include/validateFile.h"
 
 // return 1 if file passes validation
 // return 0 if file do not pass validation

@@ -85,10 +85,10 @@
 		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/src/main.c">
 			<Option target="scan_eml"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/src/validateFile.c">
+		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/src/utils/validateFile.c">
 			<Option target="scan_eml"/>
 		</Unit>
-		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/src/validatePesel.c">
+		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/src/utils/validatePesel.c">
 			<Option target="scan_eml"/>
 		</Unit>
 		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/CMakeLists.txt">

@@ -82,46 +82,46 @@ CMakeFiles/scan_eml.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/scan_eml.dir/src/main.c.s"
 	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\piotr\CLionProjects\scan_eml\src\main.c -o CMakeFiles\scan_eml.dir\src\main.c.s
 
-CMakeFiles/scan_eml.dir/src/validateFile.c.obj: CMakeFiles/scan_eml.dir/flags.make
-CMakeFiles/scan_eml.dir/src/validateFile.c.obj: C:/Users/piotr/CLionProjects/scan_eml/src/validateFile.c
-CMakeFiles/scan_eml.dir/src/validateFile.c.obj: CMakeFiles/scan_eml.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\piotr\CLionProjects\scan_eml\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/scan_eml.dir/src/validateFile.c.obj"
-	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/scan_eml.dir/src/validateFile.c.obj -MF CMakeFiles\scan_eml.dir\src\validateFile.c.obj.d -o CMakeFiles\scan_eml.dir\src\validateFile.c.obj -c C:\Users\piotr\CLionProjects\scan_eml\src\validateFile.c
+CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj: CMakeFiles/scan_eml.dir/flags.make
+CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj: C:/Users/piotr/CLionProjects/scan_eml/src/utils/validateFile.c
+CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj: CMakeFiles/scan_eml.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\piotr\CLionProjects\scan_eml\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj"
+	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj -MF CMakeFiles\scan_eml.dir\src\utils\validateFile.c.obj.d -o CMakeFiles\scan_eml.dir\src\utils\validateFile.c.obj -c C:\Users\piotr\CLionProjects\scan_eml\src\utils\validateFile.c
 
-CMakeFiles/scan_eml.dir/src/validateFile.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/scan_eml.dir/src/validateFile.c.i"
-	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\piotr\CLionProjects\scan_eml\src\validateFile.c > CMakeFiles\scan_eml.dir\src\validateFile.c.i
+CMakeFiles/scan_eml.dir/src/utils/validateFile.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/scan_eml.dir/src/utils/validateFile.c.i"
+	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\piotr\CLionProjects\scan_eml\src\utils\validateFile.c > CMakeFiles\scan_eml.dir\src\utils\validateFile.c.i
 
-CMakeFiles/scan_eml.dir/src/validateFile.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/scan_eml.dir/src/validateFile.c.s"
-	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\piotr\CLionProjects\scan_eml\src\validateFile.c -o CMakeFiles\scan_eml.dir\src\validateFile.c.s
+CMakeFiles/scan_eml.dir/src/utils/validateFile.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/scan_eml.dir/src/utils/validateFile.c.s"
+	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\piotr\CLionProjects\scan_eml\src\utils\validateFile.c -o CMakeFiles\scan_eml.dir\src\utils\validateFile.c.s
 
-CMakeFiles/scan_eml.dir/src/validatePesel.c.obj: CMakeFiles/scan_eml.dir/flags.make
-CMakeFiles/scan_eml.dir/src/validatePesel.c.obj: C:/Users/piotr/CLionProjects/scan_eml/src/validatePesel.c
-CMakeFiles/scan_eml.dir/src/validatePesel.c.obj: CMakeFiles/scan_eml.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\piotr\CLionProjects\scan_eml\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/scan_eml.dir/src/validatePesel.c.obj"
-	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/scan_eml.dir/src/validatePesel.c.obj -MF CMakeFiles\scan_eml.dir\src\validatePesel.c.obj.d -o CMakeFiles\scan_eml.dir\src\validatePesel.c.obj -c C:\Users\piotr\CLionProjects\scan_eml\src\validatePesel.c
+CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.obj: CMakeFiles/scan_eml.dir/flags.make
+CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.obj: C:/Users/piotr/CLionProjects/scan_eml/src/utils/validatePesel.c
+CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.obj: CMakeFiles/scan_eml.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\piotr\CLionProjects\scan_eml\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.obj"
+	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.obj -MF CMakeFiles\scan_eml.dir\src\utils\validatePesel.c.obj.d -o CMakeFiles\scan_eml.dir\src\utils\validatePesel.c.obj -c C:\Users\piotr\CLionProjects\scan_eml\src\utils\validatePesel.c
 
-CMakeFiles/scan_eml.dir/src/validatePesel.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/scan_eml.dir/src/validatePesel.c.i"
-	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\piotr\CLionProjects\scan_eml\src\validatePesel.c > CMakeFiles\scan_eml.dir\src\validatePesel.c.i
+CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.i"
+	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\piotr\CLionProjects\scan_eml\src\utils\validatePesel.c > CMakeFiles\scan_eml.dir\src\utils\validatePesel.c.i
 
-CMakeFiles/scan_eml.dir/src/validatePesel.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/scan_eml.dir/src/validatePesel.c.s"
-	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\piotr\CLionProjects\scan_eml\src\validatePesel.c -o CMakeFiles\scan_eml.dir\src\validatePesel.c.s
+CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.s"
+	"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\piotr\CLionProjects\scan_eml\src\utils\validatePesel.c -o CMakeFiles\scan_eml.dir\src\utils\validatePesel.c.s
 
 # Object files for target scan_eml
 scan_eml_OBJECTS = \
 "CMakeFiles/scan_eml.dir/src/main.c.obj" \
-"CMakeFiles/scan_eml.dir/src/validateFile.c.obj" \
-"CMakeFiles/scan_eml.dir/src/validatePesel.c.obj"
+"CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj" \
+"CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.obj"
 
 # External object files for target scan_eml
 scan_eml_EXTERNAL_OBJECTS =
 
 scan_eml.exe: CMakeFiles/scan_eml.dir/src/main.c.obj
-scan_eml.exe: CMakeFiles/scan_eml.dir/src/validateFile.c.obj
-scan_eml.exe: CMakeFiles/scan_eml.dir/src/validatePesel.c.obj
+scan_eml.exe: CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj
+scan_eml.exe: CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.obj
 scan_eml.exe: CMakeFiles/scan_eml.dir/build.make
 scan_eml.exe: CMakeFiles/scan_eml.dir/linkLibs.rsp
 scan_eml.exe: CMakeFiles/scan_eml.dir/objects1.rsp
