@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include "../include/validateFile.h"
-#include "../include/validatePesel.h"
+#include "../include/searchFile.h"
 
 int main(int argc, char **argv) {
     if(validateFile(argc, argv) == 0){
         return 0;
     }
 
-    char *example_pesel = "03211807116";
+    FILE *fptr;
+    fptr = fopen(argv[1], "r");
 
-    if(validatePesel(example_pesel) == 0){
-        printf("correct pesel");
-    } else {
-        printf("wrong pesel");
-    }
+    searchFile(fptr);
+
+    fclose(fptr);
+
     return 0;
 }

@@ -7,4 +7,6 @@ add_executable(scan_eml src/main.c
         src/utils/validateFile.c
         include/validateFile.h
         src/utils/validatePesel.c
-        include/validatePesel.h)
+        include/validatePesel.h
+        src/searchFile.c
+        include/searchFile.h)

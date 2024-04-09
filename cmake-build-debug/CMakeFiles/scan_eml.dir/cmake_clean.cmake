@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/scan_eml.dir/src/main.c.obj"
   "CMakeFiles/scan_eml.dir/src/main.c.obj.d"
+  "CMakeFiles/scan_eml.dir/src/searchFile.c.obj"
+  "CMakeFiles/scan_eml.dir/src/searchFile.c.obj.d"
   "CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj"
   "CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj.d"
   "CMakeFiles/scan_eml.dir/src/utils/validatePesel.c.obj"

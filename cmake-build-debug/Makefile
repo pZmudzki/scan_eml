@@ -152,6 +152,30 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/searchFile.obj: src/searchFile.c.obj
+.PHONY : src/searchFile.obj
+
+# target to build an object file
+src/searchFile.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/searchFile.c.obj
+.PHONY : src/searchFile.c.obj
+
+src/searchFile.i: src/searchFile.c.i
+.PHONY : src/searchFile.i
+
+# target to preprocess a source file
+src/searchFile.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/searchFile.c.i
+.PHONY : src/searchFile.c.i
+
+src/searchFile.s: src/searchFile.c.s
+.PHONY : src/searchFile.s
+
+# target to generate assembly for a file
+src/searchFile.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/searchFile.c.s
+.PHONY : src/searchFile.c.s
+
 src/utils/validateFile.obj: src/utils/validateFile.c.obj
 .PHONY : src/utils/validateFile.obj
 
@@ -212,6 +236,9 @@ help:
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/searchFile.obj
+	@echo ... src/searchFile.i
+	@echo ... src/searchFile.s
 	@echo ... src/utils/validateFile.obj
 	@echo ... src/utils/validateFile.i
 	@echo ... src/utils/validateFile.s
