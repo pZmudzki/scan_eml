@@ -7,7 +7,7 @@
 
 int validateFile(int argc, char **argv){
     if(argc > 2) {
-        printf("Please enter a file directory without spaces!\n");
+        printf("Please enter a file path without spaces!\n");
         return 0;
     }
     if(fopen(argv[1], "r") == NULL) {

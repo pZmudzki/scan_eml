@@ -45,7 +45,6 @@ void searchFile(char *dir){
     // keep track of curr_sequence next character index to be place in
     int curr_idx = 0;
 
-    printf("Scanning for pesel...\n");
     while(!feof(fp)){
         // get row from a file
         fgets(row, 2000, fp);

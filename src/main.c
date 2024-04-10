@@ -7,7 +7,8 @@ int main(int argc, char **argv) {
         return 0;
     }
 
+    printf("Scanning for pesel...\n");
     searchFile(argv[1]);
-
+    printf("\nFinished scanning.\n");
     return 0;
 }
