@@ -1,3 +1,3 @@
-C:/Users/piotr/CLionProjects/scan_eml/cmake-build-debug/CMakeFiles/scan_eml.dir
-C:/Users/piotr/CLionProjects/scan_eml/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/piotr/CLionProjects/scan_eml/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/pioter/CLionProjects/scan_eml/cmake-build-debug/CMakeFiles/scan_eml.dir
+/home/pioter/CLionProjects/scan_eml/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/pioter/CLionProjects/scan_eml/cmake-build-debug/CMakeFiles/rebuild_cache.dir

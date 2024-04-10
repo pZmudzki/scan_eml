@@ -21,7 +21,39 @@ int validateWindowsFile(char *filepath){
     return 1;
 }
 
-int validateLinuxFile(char *filepath){}
+int validateLinuxFile(const char *filepath){
+    // variable for storing file command result
+    char command_output[250];
+    char command[100] = "file -b ";
+    char *valid_format = "SMTP mail";
+    FILE *fp_cmd;
+
+    // concatenate command with filepath
+    strcat(command, filepath);
+
+    // open commandline stream
+    fp_cmd = popen(command, "r");
+    if(fp_cmd == NULL){
+        printf("Failed to check file format.");
+        exit(0);
+    }
+
+    // get file command output directly from terminal
+    fgets(command_output, sizeof(command_output), fp_cmd);
+
+    // iterate through command_output and valid_format
+    // check if string are the same
+    for(int i = 0; i < strlen(valid_format); i++){
+        if(command_output[i] != valid_format[i]){
+            return 0;
+        }
+    }
+
+    // close stream
+    pclose(fp_cmd);
+
+    return 1;
+}
 
 // return 1 if file passes validation
 // return 0 if file do not pass validation
@@ -38,7 +70,10 @@ int validateFile(int argc, char **argv){
     // Checking for linux OS with
     // __linux__ macro
     #ifdef __linux__
-        printf("Hey Geek it seems that you are working on a Linux OS.\n");
+        if(!validateLinuxFile(argv[1])){
+            printf("Wrong file format! Please enter .eml file.\n");
+            return 0;
+        }
 
     // Checking for windows OS with
     // _WIN32 macro
@@ -48,10 +83,10 @@ int validateFile(int argc, char **argv){
             return 0;
         }
 
-    // Throw an error
+    // Throw an error if user isn't on LINUX/WINDOWS
     #else
-        printf("Your OS is not compatible!");
-
+        printf("Your OS is incompatible!");
+        return 0;
     #endif
     return 1;
 }
