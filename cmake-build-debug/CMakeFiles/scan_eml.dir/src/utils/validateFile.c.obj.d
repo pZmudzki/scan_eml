@@ -21,4 +21,6 @@ CMakeFiles/scan_eml.dir/src/utils/validateFile.c.obj: \
  D:/Program\ files/JetBrains/CLion\ 2023.3.4/bin/mingw/x86_64-w64-mingw32/include/malloc.h \
  D:/Program\ files/JetBrains/CLion\ 2023.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/mm_malloc.h \
  D:/Program\ files/JetBrains/CLion\ 2023.3.4/bin/mingw/x86_64-w64-mingw32/include/errno.h \
+ D:/Program\ files/JetBrains/CLion\ 2023.3.4/bin/mingw/x86_64-w64-mingw32/include/string.h \
+ D:/Program\ files/JetBrains/CLion\ 2023.3.4/bin/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h \
  C:/Users/piotr/CLionProjects/scan_eml/include/validateFile.h
