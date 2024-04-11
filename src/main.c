@@ -8,12 +8,14 @@ int main(int argc, char **argv) {
         return 0;
     }
 
+    printf("Extracting files...\n");
     if(!extract_attachments(argv[1])){
         return 0;
     }
+    printf("Successfully extracted!\n\n");
 
     printf("Scanning for pesel...\n");
-    //searchFile(argv[1]);
+    searchFile(argv[1]);
     printf("\nFinished scanning.\n");
     return 0;
 }

@@ -11,45 +11,52 @@ int extract_attachments(const char *dir) {
         return 0;
     }
 
-    char line[1024];
-    int in_attachment = 0;
+    char row[1024];
     char attachment_name[256];
+    int in_attachment_header = 0;
+    int found_plain_text = 0;
+    int in_attachment_content = 0;
 
-    while (fgets(line, sizeof(line), file) != NULL) {
-        if (strncmp(line, "Content-Type: application/", strlen("Content-Type: application/")) == 0) {
-            in_attachment = 1;
-        } else if (strncmp(line, "Content-Transfer-Encoding: base64", strlen("Content-Transfer-Encoding: base64")) == 0 && in_attachment) {
-            char attachment_data[strlen(line) + 1];
+    while (fgets(row, sizeof(row), file) != NULL) {
 
-            while (fgets(line, (int)strlen(line), file) != NULL) {
-                if (strncmp(line, "--", 2) == 0) {
-                    break;
-                }
-                printf("%s\n", line);
-                strcat(attachment_data, line);
-            }
+        // reset in attachment state
+        if(strncmp(row, "--", 2) == 0){
+            in_attachment_content = 0;
+            found_plain_text = 0;
+        }
 
-            //printf("%s length: %llu\n", attachment_data, strlen(line));
+        if(in_attachment_content){
+            char *attachment_data_decoded = base64_decode(row);
 
-            // Decode attachment_data (base64 encoded) into attachment_data_decoded
-            char *attachment_data_decoded =  base64_decode(attachment_data);
+            //printf("\n%s\n", attachment_name);
 
-            // Write attachment_data_decoded to a file
-
-            FILE *attachment_file = fopen(attachment_name, "wb");
+            FILE *attachment_file = fopen(attachment_name, "ab");
             fwrite(attachment_data_decoded, 1, strlen(attachment_data_decoded), attachment_file);
             fclose(attachment_file);
-
-            // Reset variables for next attachment
-            in_attachment = 0;
-            attachment_name[0] = '\0';
-            attachment_data[0] = '\0';
-        } else if (strncmp(line, "Content-Disposition: attachment", strlen("Content-Disposition: attachment")) == 0) {
-            // Extract attachment name
-            sscanf(line, "Content-Disposition: attachment; filename=\"%[^\"]\"", attachment_name);
         }
-    }
 
+        if(strncmp(row, "Content-Type: application/", strlen("Content-Type: application/")) == 0){
+            in_attachment_header = 1;
+        } else if(strncmp(row, "Content-Type: text/plain", strlen("Content-Type: text/plain")) == 0){
+            found_plain_text = 1;
+        }
+
+        if(found_plain_text && strncmp(row, "Content-Transfer-Encoding: base64", strlen("Content-Transfer-Encoding: base64")) == 0){
+            in_attachment_header = 1;
+        }
+
+        if (strncmp(row, "Content-Disposition: attachment", strlen("Content-Disposition: attachment")) == 0) {
+            // Extract attachment name
+            sscanf(row, "Content-Disposition: attachment; filename=\"%[^\"]\"", attachment_name);
+        }
+
+        if(in_attachment_header && strncmp(row, "\n", 1) == 0) {
+            in_attachment_content = 1;
+            in_attachment_header = 0;
+        }
+
+
+    }
     fclose(file);
     return 1;
 }
