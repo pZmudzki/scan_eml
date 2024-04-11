@@ -1,0 +1,3 @@
+"D:\Program files\JetBrains\CLion 2023.3.4\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\scan_eml.dir/objects.a
+"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\ar.exe" qc CMakeFiles\scan_eml.dir/objects.a @CMakeFiles\scan_eml.dir\objects1.rsp
+"D:\Program files\JetBrains\CLion 2023.3.4\bin\mingw\bin\gcc.exe" -g -Wl,--whole-archive CMakeFiles\scan_eml.dir/objects.a -Wl,--no-whole-archive -o scan_eml.exe -Wl,--out-implib,libscan_eml.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\scan_eml.dir\linkLibs.rsp

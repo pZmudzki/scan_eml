@@ -9,4 +9,8 @@ add_executable(scan_eml src/main.c
         src/utils/validatePesel.c
         include/validatePesel.h
         src/searchFile.c
-        include/searchFile.h)
+        include/searchFile.h
+        src/extractFiles.c
+        include/extractFiles.h
+        src/utils/base64.c
+        include/base64.h)

@@ -76,6 +76,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/include/base64.h">
+			<Option target="scan_eml"/>
+		</Unit>
+		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/include/extractFiles.h">
+			<Option target="scan_eml"/>
+		</Unit>
 		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/include/searchFile.h">
 			<Option target="scan_eml"/>
 		</Unit>
@@ -85,10 +91,16 @@
 		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/include/validatePesel.h">
 			<Option target="scan_eml"/>
 		</Unit>
+		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/src/extractFiles.c">
+			<Option target="scan_eml"/>
+		</Unit>
 		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/src/main.c">
 			<Option target="scan_eml"/>
 		</Unit>
 		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/src/searchFile.c">
+			<Option target="scan_eml"/>
+		</Unit>
+		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/src/utils/base64.c">
 			<Option target="scan_eml"/>
 		</Unit>
 		<Unit filename="C:/Users/piotr/CLionProjects/scan_eml/src/utils/validateFile.c">

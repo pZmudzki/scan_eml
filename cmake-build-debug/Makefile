@@ -128,6 +128,30 @@ scan_eml/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/build
 .PHONY : scan_eml/fast
 
+src/extractFiles.obj: src/extractFiles.c.obj
+.PHONY : src/extractFiles.obj
+
+# target to build an object file
+src/extractFiles.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/extractFiles.c.obj
+.PHONY : src/extractFiles.c.obj
+
+src/extractFiles.i: src/extractFiles.c.i
+.PHONY : src/extractFiles.i
+
+# target to preprocess a source file
+src/extractFiles.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/extractFiles.c.i
+.PHONY : src/extractFiles.c.i
+
+src/extractFiles.s: src/extractFiles.c.s
+.PHONY : src/extractFiles.s
+
+# target to generate assembly for a file
+src/extractFiles.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/extractFiles.c.s
+.PHONY : src/extractFiles.c.s
+
 src/main.obj: src/main.c.obj
 .PHONY : src/main.obj
 
@@ -175,6 +199,30 @@ src/searchFile.s: src/searchFile.c.s
 src/searchFile.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/searchFile.c.s
 .PHONY : src/searchFile.c.s
+
+src/utils/base64.obj: src/utils/base64.c.obj
+.PHONY : src/utils/base64.obj
+
+# target to build an object file
+src/utils/base64.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/utils/base64.c.obj
+.PHONY : src/utils/base64.c.obj
+
+src/utils/base64.i: src/utils/base64.c.i
+.PHONY : src/utils/base64.i
+
+# target to preprocess a source file
+src/utils/base64.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/utils/base64.c.i
+.PHONY : src/utils/base64.c.i
+
+src/utils/base64.s: src/utils/base64.c.s
+.PHONY : src/utils/base64.s
+
+# target to generate assembly for a file
+src/utils/base64.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\scan_eml.dir\build.make CMakeFiles/scan_eml.dir/src/utils/base64.c.s
+.PHONY : src/utils/base64.c.s
 
 src/utils/validateFile.obj: src/utils/validateFile.c.obj
 .PHONY : src/utils/validateFile.obj
@@ -233,12 +281,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... scan_eml
+	@echo ... src/extractFiles.obj
+	@echo ... src/extractFiles.i
+	@echo ... src/extractFiles.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
 	@echo ... src/searchFile.obj
 	@echo ... src/searchFile.i
 	@echo ... src/searchFile.s
+	@echo ... src/utils/base64.obj
+	@echo ... src/utils/base64.i
+	@echo ... src/utils/base64.s
 	@echo ... src/utils/validateFile.obj
 	@echo ... src/utils/validateFile.i
 	@echo ... src/utils/validateFile.s
