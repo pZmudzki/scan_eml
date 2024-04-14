@@ -13,6 +13,7 @@ int extract_attachments(const char *dir, char **attachments) {
 
     // helpful variable for debugging
     // int row_count = 0;
+
     char row[1024];
 
     // variable for getting file's name
@@ -105,4 +106,26 @@ int extract_attachments(const char *dir, char **attachments) {
     }
     fclose(file);
     return 1;
+}
+
+int count_attachments(const char *dir){
+    FILE *file = fopen(dir, "rb");
+    if (file == NULL) {
+        printf("Error opening file\n");
+        return 0;
+    }
+
+    int attachment_count = 0;
+    char row[1024];
+
+    while (!feof(file)) {
+        fgets(row, sizeof(row), file);
+
+        if(strncmp(row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0){
+           attachment_count++;
+        }
+    }
+
+    fclose(file);
+    return attachment_count;
 }

@@ -13,13 +13,18 @@ int main(int argc, char **argv) {
         return 0;
     }
 
-    int found_attachments_count = 1;
+    // Get attachments count
+    int found_attachments_count = count_attachments(argv[1]);
+
+    //Initiate attachments string arr with found_attachments_count size
     char *attachments[found_attachments_count];
 
     printf("Extracting files...");
     if(!extract_attachments(argv[1], attachments)){
+        printf("\nError extracting attachments!\n");
         return 0;
     }
+    printf(" DONE\n");
 
     printf("N of attachments: %d\n", found_attachments_count);
     for(int i = 0; i <= found_attachments_count - 1; i++){
@@ -27,7 +32,6 @@ int main(int argc, char **argv) {
     }
 
 
-    printf(" DONE\n");
 
     printf("Scanning for pesel...\n");
     searchFile(argv[1]);
