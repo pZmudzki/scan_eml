@@ -9,7 +9,7 @@ extracts file attachments from .eml file
 @param attachments - list of attachments
 @return 0 - if error, 1 - if successful
 ***********************************************/
-int extract_attachments(const char *dir, char **attachments);
+int extract_attachments(const char *dir, char *attachments[]);
 
 /***********************************************
 extracts file attachments from .eml file

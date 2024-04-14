@@ -55,14 +55,12 @@ int extract_attachments(const char *dir, char **attachments) {
 
         if(strncmp(row, "Content-Type: application/", strlen("Content-Type: application/")) == 0){
             in_attachment_header = 1;
-            attachment_count++;
         } else if(strncmp(row, "Content-Type: text/plain", strlen("Content-Type: text/plain")) == 0){
             found_plain_text = 1;
         }
 
         if(found_plain_text && strncmp(row, "Content-Transfer-Encoding: base64", strlen("Content-Transfer-Encoding: base64")) == 0){
             in_attachment_header = 1;
-            attachment_count++;
         }
 
         // If the previous row is "Content-Disposition: attachment;"
@@ -70,36 +68,47 @@ int extract_attachments(const char *dir, char **attachments) {
         if (strncmp(prev_row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0) {
             // Extract attachment name
 
-            int name_start = strchr(row, '"') - row;
-            int name_end = strrchr(row, '"') - row - 1;
+            char *first_char = strchr(row, '"');
+            char *last_char = strrchr(row, '"');
 
-            // Loop through a row
-            int name_idx = 0;
-            char name[256] = {0};
+            if(strcmp(first_char, "(null)") != 0 || strcmp(last_char, "(null)") != 0){
 
-            for(int i = name_start + 1; i <= name_end; i++){
-                name[name_idx] = row[i];
-                name_idx++;
+                int name_start = first_char - row;
+                int name_end = last_char - row - 1;
+
+                // Search a row for a file name
+                int name_idx = 0;
+                char name[256] = {0};
+
+                for(int i = name_start + 1; i <= name_end; i++){
+                    name[name_idx] = row[i];
+                    name_idx++;
+                }
+                name[name_idx + 1] = '\0';
+
+                strcpy(attachment_name, name);
+
+                // Change prev_row value, so it won't collide
+                // with another if statement
+                strcpy(prev_row, row);
+            } else {
+                strcpy(attachment_name, "undefined_file");
             }
-            name[name_idx + 1] = '\0';
 
-            strcpy(attachment_name, name);
-
-            // Change prev_row value, so it won't collide
-            // with another if statement
-            strcpy(prev_row, row);
+            attachments[attachment_count] = attachment_name;
         }
 
         if (strncmp(row, "Content-Disposition: attachment; filename=", strlen("Content-Disposition: attachment; filename=")) == 0) {
             // Extract attachment name
             sscanf(row, "Content-Disposition: attachment; filename=\"%[^\"]\"", attachment_name);
 
+            attachments[attachment_count] = attachment_name;
         } else if(strncmp(row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0){
             strcpy(prev_row, row);
         }
 
-        if(attachments[attachment_count - 1] != attachment_name){
-            attachments[attachment_count] = attachment_name;
+        if(strncmp(row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0){
+            attachment_count++;
         }
 
         //row_count++;
