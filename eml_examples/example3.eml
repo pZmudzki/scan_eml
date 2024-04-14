@@ -1,15 +1,83 @@
+Delivered-To: piotr.zmudzki@uth.pl
+Received: by 2002:a05:6359:b9e:b0:186:300e:684 with SMTP id gf30csp2612932rwb;
+        Thu, 11 Apr 2024 10:24:23 -0700 (PDT)
+X-Received: by 2002:a17:906:d54c:b0:a51:9416:4c9d with SMTP id cr12-20020a170906d54c00b00a5194164c9dmr265676ejc.46.1712856263197;
+        Thu, 11 Apr 2024 10:24:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712856263; cv=none;
+        d=google.com; s=arc-20160816;
+        b=BJsJ8+Tcw2MpJOo7AuzrckwO+GyNYf6+SPGYK3SW4/aWAwtVCe8bY0QpRVZxoO5BpI
+         z6ATwG3n9PFH0X9YlnTX1ZfZO59BqVW241dV4+RrjTL9LMmImqSGXpWxTXqNe+88w5ZK
+         rMYC85sikInwjef0ZSAMIGU839/I/z+l2fOAyDgJ2oVR6JOQPBohQFS1OzQSr7bE0qMo
+         BcAHT8Oic9ktnUdLwm04fGRvIEADpZ8K+NyuD/f0VH1MEm7TYyMbP66OyeBhJd27hZuA
+         Q4pPZG6g0XnUFwbW6u7mSWthVi774T/i/p8CmFXQok03miq+F9IdqPuTnEHTmayHV7pE
+         rfBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=hJzvMBxU2mlRGp5EpHtOkiIB5rDVO5koO9/H9lfM9TI=;
+        fh=9qgPoT6Qut9oToaPwckixMo9eQDUQSP1rie7Xfq01s4=;
+        b=s+2AWMSAc2jHd3ckgFzjlalT+fs1LDiFYqoWsjBWWqbsf55oSv4+XHw+mKyn9nbV4Y
+         Dh/u1J5CGs+s3CAeRN8iggr1/yZLniha6geSSU6ZvcJrrMHFF8fbwheTLX8dacuoLgGS
+         LoD3Jm8SvM6ZXZNhXgUsES4d+WYgPtMJu5/fp7SAFyM9setGn0EEOxPcULA8WcpXC4DG
+         tqxAss9PvZx1YiiD6Lm3VXTfQjzgldm0gINrtZ//5LBn+MMYsE+/zwTEG6CYrhNktJth
+         XY34aUShYzGgFflx6BuPm1e4KAfYt8f7FxcRiy0WNquSdlJnFUP8w4MEcv73WVnN/jmU
+         9Gbg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=c8d7FgHE;
+       spf=pass (google.com: domain of piotr.zmudzki47@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=piotr.zmudzki47@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <piotr.zmudzki47@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id i10-20020a170906a28a00b00a51c541ab6dsor626046ejz.19.2024.04.11.10.24.22
+        for <piotr.zmudzki@uth.pl>
+        (Google Transport Security);
+        Thu, 11 Apr 2024 10:24:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of piotr.zmudzki47@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=c8d7FgHE;
+       spf=pass (google.com: domain of piotr.zmudzki47@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=piotr.zmudzki47@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1712856262; x=1713461062; darn=uth.pl;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=hJzvMBxU2mlRGp5EpHtOkiIB5rDVO5koO9/H9lfM9TI=;
+        b=c8d7FgHEajo1pP31aw69kngs/61JkzxGSePQoN8vPuwNRIWPGSFgSDNnFYa63kVKSh
+         x/SkzH/U0h1yxRLlR42B7U71hRZzt9Zptkx3WfQf2VZ2YUCnHfljLgt6mu/q+w4s/b9r
+         xvK97KyEcc/J8tkl7Y1+CCT/uLTS5AIehI6VeSsEhWDg34z68TVN6s0ERT/RC0KM0YUE
+         6G4rtySUBubRfWYADuZCVonqgfejHmN06VAey1+caA+jE1sxvi/0oc6arlRaToR4ZXKc
+         Itun0yeuDyjGc4hKDqnbzIYNIPIGlfKLbdJS7qkgLcQ4AO3NS/kOeUmx6kW0vRoRCFdT
+         O84A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712856262; x=1713461062;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=hJzvMBxU2mlRGp5EpHtOkiIB5rDVO5koO9/H9lfM9TI=;
+        b=rzgrY4qCI964hwJB/dgIdnWIgqcp8OenP486lZWugXTDAsNMbNWRM+z4Gu/cYZsJbu
+         YvQzQ86shliy5g/6y2L1GJ2yzPv8IDcMXrYubxg0CNbuChAMKFGDz8lsLsid/tgjlxvQ
+         P60dKl0AUrqnJp0sx9JMzTatbYl0js6tvYLOH/J1wesbfI1khRcSABNoUekV+Nfh1vJr
+         44161LftpaDhMD5CyGlpKVwAH6/0N3qxC7AhmiW3RO4wwMSqFB9ZUYo659OrQWqfjk3g
+         gwdiLCOaVl4Hu0dCochhIUKE1+Rpfn1XVn4279U+0o91xC6dPoONmmSb80jlrcEE1btN
+         1ClQ==
+X-Gm-Message-State: AOJu0YzIWrSMMtnCr4p4FksniX88SEpHLQFgVzU1G8kMwr9UBMu4lrRU
+	40OVTGx0jfEjbaSRpn3eqsSLVAo6KxcBNQY+Q4I3PhK7mZ/K8r/kmk9uX3W5JSV2JzBdJlVbLPC
+	QWwYGe14epIdezFdg1KN6zFlfUZmrIUoVbUs=
+X-Google-Smtp-Source: AGHT+IG8GA7OwyM3KkaKdTxTw69CGXK+dEScwYGEWQRltG03ILTJBkMHNNPF9bvAqYO7l92ZBSyivV1vklU4nGJjBc0=
+X-Received: by 2002:a17:907:7d93:b0:a51:d1a7:ad6 with SMTP id
+ oz19-20020a1709077d9300b00a51d1a70ad6mr286747ejc.76.1712856262410; Thu, 11
+ Apr 2024 10:24:22 -0700 (PDT)
 MIME-Version: 1.0
+From: =?UTF-8?Q?Piotr_=C5=BBmudzki?= <piotr.zmudzki47@gmail.com>
 Date: Thu, 11 Apr 2024 19:24:10 +0200
 Message-ID: <CANmd_1qoC2hzieH55dGo11F-80Guz97rpGLrTwWD4EE8s_KZxQ@mail.gmail.com>
 Subject: Pesel check1
-From: =?UTF-8?Q?Piotr_=C5=BBmudzki?= <piotr.zmudzki47@gmail.com>
 To: piotr.zmudzki@uth.pl
-Content-Type: multipart/mixed; boundary="0000000000006dc3bf0615d56cad"
+Content-Type: multipart/mixed; boundary="000000000000129b6e0615d56df5"
 
---0000000000006dc3bf0615d56cad
-Content-Type: multipart/alternative; boundary="0000000000006dc3bd0615d56cab"
+--000000000000129b6e0615d56df5
+Content-Type: multipart/alternative; boundary="000000000000129b6c0615d56df3"
 
---0000000000006dc3bd0615d56cab
+--000000000000129b6c0615d56df3
 Content-Type: text/plain; charset="UTF-8"
 
 In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora
@@ -83,7 +151,7 @@ at urna vestibulum auctor. Nam eget urna sem. Quisque luctus leo lorem, sit
 amet semper
 quam vestibulum sit amet. Ut id iaculis nunc, eget gravida mauris.
 
---0000000000006dc3bd0615d56cab
+--000000000000129b6c0615d56df3
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -133,13 +201,14 @@ r vitae quam<br>at urna vestibulum auctor. Nam eget urna sem. Quisque luctu=
 s leo lorem, sit amet semper<br>quam vestibulum sit amet. Ut id iaculis nun=
 c, eget gravida mauris.<br></div>
 
---0000000000006dc3bd0615d56cab--
---0000000000006dc3bf0615d56cad
+--000000000000129b6c0615d56df3--
+--000000000000129b6e0615d56df5
 Content-Type: text/plain; charset="US-ASCII"; name="In hac habitasse platea dictumst.txt"
-Content-Disposition: attachment; filename="In hac habitasse platea dictumst.txt"
+Content-Disposition: attachment; 
+	filename="In hac habitasse platea dictumst.txt"
 Content-Transfer-Encoding: base64
-X-Attachment-Id: f_luvidp7m0
 Content-ID: <f_luvidp7m0>
+X-Attachment-Id: f_luvidp7m0
 
 SW4gaGFjIGhhYml0YXNzZSBwbGF0ZWEgZGljdHVtc3QuIENsYXNzIGFwdGVudCB0YWNpdGkgc29j
 aW9zcXUgYWQgbGl0b3JhIHRvcnF1ZW50IHBlciBjb251YmlhDQpub3N0cmEsIHBlciBpbmNlcHRv
@@ -198,4 +267,4 @@ cmVldCBhYyBhIGxlby4gU2VkIHV0IHBvc3VlcmUgc2FwaWVuLiBJbnRlZ2VyIHZpdGFlIHF1YW0N
 CmF0IHVybmEgdmVzdGlidWx1bSBhdWN0b3IuIE5hbSBlZ2V0IHVybmEgc2VtLiBRdWlzcXVlIGx1
 Y3R1cyBsZW8gbG9yZW0sIHNpdCBhbWV0IHNlbXBlcg0KcXVhbSB2ZXN0aWJ1bHVtIHNpdCBhbWV0
 LiBVdCBpZCBpYWN1bGlzIG51bmMsIGVnZXQgZ3JhdmlkYSBtYXVyaXMu
---0000000000006dc3bf0615d56cad--
+--000000000000129b6e0615d56df5--
