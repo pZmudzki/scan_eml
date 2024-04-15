@@ -3,8 +3,34 @@
 
 #include "../include/extractFiles.h"
 #include "../include/base64.h"
+#include "../include/searchFile.h"
 
-int extract_attachments(const char *dir, char **attachments) {
+#define MAX_NAME_LENGTH 256
+#define MAX_ROW_LENGTH 1024
+
+int count_attachments(const char *dir){
+    FILE *file = fopen(dir, "rb");
+    if (file == NULL) {
+        printf("Error opening file\n");
+        return 0;
+    }
+
+    int attachment_count = 0;
+    char row[MAX_ROW_LENGTH];
+
+    while (!feof(file)) {
+        fgets(row, sizeof(row), file);
+
+        if(strncmp(row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0){
+            attachment_count++;
+        }
+    }
+
+    fclose(file);
+    return attachment_count;
+}
+
+int extract_and_search_attachments(const char *dir) {
     FILE *file = fopen(dir, "rb");
     if (file == NULL) {
         printf("Error opening file\n");
@@ -14,18 +40,27 @@ int extract_attachments(const char *dir, char **attachments) {
     // helpful variable for debugging
     // int row_count = 0;
 
-    char row[1024];
+    char row[MAX_ROW_LENGTH];
 
     // variable for getting file's name
     // while it is in the next row of the file
-    char prev_row[1024];
+    char prev_row[MAX_ROW_LENGTH];
 
-    int attachment_count = 0;
+    char attachment_name[MAX_NAME_LENGTH];
 
-    char attachment_name[256];
+    // -1 because loop increases idx before
+    // copying name to an array
+    int curr_attachment_idx = -1;
     int found_plain_text = 0;
     int in_attachment_header = 0;
     int in_attachment_content = 0;
+
+    /* -- for attachment search -- */
+
+    // found attachments count
+    int attachment_count = count_attachments(dir);
+    // found attachments names
+    char attachments[attachment_count][MAX_NAME_LENGTH];
 
     while (!feof(file)) {
         fgets(row, sizeof(row), file);
@@ -78,7 +113,7 @@ int extract_attachments(const char *dir, char **attachments) {
 
                 // Search a row for a file name
                 int name_idx = 0;
-                char name[256] = {0};
+                char name[MAX_NAME_LENGTH] = {0};
 
                 for(int i = name_start + 1; i <= name_end; i++){
                     name[name_idx] = row[i];
@@ -91,50 +126,32 @@ int extract_attachments(const char *dir, char **attachments) {
                 // Change prev_row value, so it won't collide
                 // with another if statement
                 strcpy(prev_row, row);
+
+                strcpy(attachments[curr_attachment_idx], attachment_name);
             } else {
                 strcpy(attachment_name, "undefined_file");
             }
-
-            attachments[attachment_count] = attachment_name;
         }
 
         if (strncmp(row, "Content-Disposition: attachment; filename=", strlen("Content-Disposition: attachment; filename=")) == 0) {
             // Extract attachment name
             sscanf(row, "Content-Disposition: attachment; filename=\"%[^\"]\"", attachment_name);
 
-            attachments[attachment_count] = attachment_name;
+
+            strcpy(attachments[curr_attachment_idx], attachment_name);
         } else if(strncmp(row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0){
             strcpy(prev_row, row);
         }
-
         if(strncmp(row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0){
-            attachment_count++;
+            curr_attachment_idx++;
         }
-
         //row_count++;
     }
+
+    for(int i = 0; i <= attachment_count - 1; i++){
+        searchFile(attachments[i]);
+    }
+
     fclose(file);
     return 1;
-}
-
-int count_attachments(const char *dir){
-    FILE *file = fopen(dir, "rb");
-    if (file == NULL) {
-        printf("Error opening file\n");
-        return 0;
-    }
-
-    int attachment_count = 0;
-    char row[1024];
-
-    while (!feof(file)) {
-        fgets(row, sizeof(row), file);
-
-        if(strncmp(row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0){
-           attachment_count++;
-        }
-    }
-
-    fclose(file);
-    return attachment_count;
 }

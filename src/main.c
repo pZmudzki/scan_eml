@@ -3,9 +3,6 @@
 #include "../include/searchFile.h"
 #include "../include/extractFiles.h"
 
-#define MAX_FILES 500
-
-typedef struct found_file FOUND_FILE;
 
 int main(int argc, char **argv) {
 
@@ -13,28 +10,16 @@ int main(int argc, char **argv) {
         return 0;
     }
 
-    // Get attachments count
-    int found_attachments_count = count_attachments(argv[1]);
+    printf("Scanning for pesel...\n");
 
-    //Initiate attachments string arr with found_attachments_count size
-    char *attachments[found_attachments_count];
+    searchFile(argv[1]);
 
-    printf("Extracting files...");
-    if(!extract_attachments(argv[1], attachments)){
+    if(!extract_and_search_attachments(argv[1])){
         printf("\nError extracting attachments!\n");
         return 0;
-    }
-    printf(" DONE\n");
-
-    printf("N of attachments: %d\n", found_attachments_count);
-    for(int i = 0; i <= found_attachments_count - 1; i++){
-        printf("File %d: %s\n", i, attachments[i]);
+    } else {
+        printf("\nFinished scanning.\n");
     }
 
-
-
-    printf("Scanning for pesel...\n");
-    searchFile(argv[1]);
-    printf("\nFinished scanning.\n");
     return 0;
 }
