@@ -148,8 +148,11 @@ int extract_and_search_attachments(const char *dir) {
         //row_count++;
     }
 
-    for(int i = 0; i <= attachment_count - 1; i++){
+    // Search file for each attachment found
+    // then delete it them
+    for(int i = 0; i <= attachment_count - 1; i++) {
         searchFile(attachments[i]);
+        remove(attachments[i]);
     }
 
     fclose(file);
