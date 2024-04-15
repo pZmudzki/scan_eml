@@ -33,6 +33,8 @@ void searchFile(char *dir){
     FILE *fp;
     fp = fopen(dir, "r");
 
+    printf("\nFile \"%s\":\n", getFileNameFromDir(dir));
+
     int pesel_found = 0;
 
     // row has 2000 space just to be safe that
@@ -62,7 +64,7 @@ void searchFile(char *dir){
             // found 11 nums in a row
             if(curr_idx == PESEL_MAX_LENGTH){
                 if(validatePesel(curr_sequence) == 1){
-                    printf("\nPesel found: %s\nLine: %d\nFile: %s\n", curr_sequence, row_count, getFileNameFromDir(dir));
+                    printf("Pesel found: %s Line: %d\n", curr_sequence, row_count);
                     pesel_found = 1;
                 }
                 curr_idx = 0;
@@ -70,7 +72,7 @@ void searchFile(char *dir){
         }
     }
     if(pesel_found == 0){
-        printf("\nNo pesel number was found!\n");
+        printf("No pesel number was found!\n");
     }
     fclose(fp);
 }
