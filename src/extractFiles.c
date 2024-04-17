@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <sys/stat.h>
 
 #include "../include/extractFiles.h"
 #include "../include/base64.h"
 #include "../include/searchFile.h"
 
+#define MAX_PATH_LENGTH 1024
 #define MAX_NAME_LENGTH 256
 #define MAX_ROW_LENGTH 1024
 
@@ -37,6 +39,30 @@ int extract_and_search_attachments(const char *dir) {
         return 0;
     }
 
+    // extract file name for later attachment folder creation
+    const char *file_name = getFileNameFromDir(dir);
+    // create base folder path by concatenation other strings
+    char base_dir_name[MAX_PATH_LENGTH] = "attachments(";
+    strcat(base_dir_name, file_name);
+    strcat(base_dir_name, ")");
+
+    int fail;
+
+    #ifdef __linux__
+        fail = mkdir(base_dir_name, 0777);
+    #else
+        fail = _mkdir(base_dir_name);
+    #endif
+
+    if (fail){
+        printf("Unable to create folder\n");
+        return 0;
+    } else {
+        // complete path string with a "/"
+        strcat(base_dir_name, "/");
+    }
+
+
     // helpful variable for debugging
     // int row_count = 0;
 
@@ -47,6 +73,7 @@ int extract_and_search_attachments(const char *dir) {
     char prev_row[MAX_ROW_LENGTH];
 
     char attachment_name[MAX_NAME_LENGTH];
+    char attachment_path[MAX_PATH_LENGTH];
 
     // -1 because loop increases idx before
     // copying name to an array
@@ -73,9 +100,8 @@ int extract_and_search_attachments(const char *dir) {
 
         if(in_attachment_content){
             char *attachment_data_decoded = base64_decode(row);
-            //printf("\n%s\n", attachment_name);
 
-            FILE *attachment_file = fopen(attachment_name, "ab");
+            FILE *attachment_file = fopen(attachment_path, "ab");
             fwrite(attachment_data_decoded, 1, strlen(attachment_data_decoded), attachment_file);
             fclose(attachment_file);
         }
@@ -123,6 +149,10 @@ int extract_and_search_attachments(const char *dir) {
 
                 strcpy(attachment_name, name);
 
+                strcpy(attachment_path, base_dir_name);
+                strcat(attachment_path, attachment_name);
+
+
                 // Change prev_row value, so it won't collide
                 // with another if statement
                 strcpy(prev_row, row);
@@ -137,6 +167,8 @@ int extract_and_search_attachments(const char *dir) {
             // Extract attachment name
             sscanf(row, "Content-Disposition: attachment; filename=\"%[^\"]\"", attachment_name);
 
+            strcpy(attachment_path, base_dir_name);
+            strcat(attachment_path, attachment_name);
 
             strcpy(attachments[curr_attachment_idx], attachment_name);
         } else if(strncmp(row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0){
@@ -152,7 +184,7 @@ int extract_and_search_attachments(const char *dir) {
     // then delete it them
     for(int i = 0; i <= attachment_count - 1; i++) {
         searchFile(attachments[i]);
-        remove(attachments[i]);
+        //remove(attachments[i]);
     }
 
     fclose(file);
