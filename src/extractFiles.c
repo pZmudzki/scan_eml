@@ -51,11 +51,11 @@ int extract_and_search_attachments(const char *dir) {
     #ifdef __linux__
         fail = mkdir(base_dir_name, 0777);
     #else
-        fail = _mkdir(base_dir_name);
+        fail = mkdir(base_dir_name);
     #endif
 
     if (fail){
-        printf("Unable to create folder\n");
+        printf("\nUnable to scan attachments, probable causes:\n\t1. An error occurred.\n\t2. File was already scanned, please delete earlier created folder and try again. \n");
         return 0;
     } else {
         // complete path string with a "/"
@@ -68,9 +68,11 @@ int extract_and_search_attachments(const char *dir) {
 
     char row[MAX_ROW_LENGTH];
 
-    // variable for getting file's name
-    // while it is in the next row of the file
-    char prev_row[MAX_ROW_LENGTH];
+//    // variable for getting file's name
+//    // while it is in the next row of the file
+//    char prev_row[MAX_ROW_LENGTH];
+
+    int attachment_row_found = 0;
 
     char attachment_name[MAX_NAME_LENGTH];
     char attachment_path[MAX_PATH_LENGTH];
@@ -124,17 +126,18 @@ int extract_and_search_attachments(const char *dir) {
             in_attachment_header = 1;
         }
 
-        // If the previous row is "Content-Disposition: attachment;"
-        // then get attachment name from the next row
-        if (strncmp(prev_row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0) {
+        // If previous row was "Content-Disposition: attachment;" then attachment_row_found will be true
+        if(attachment_row_found){
             // Extract attachment name
-
             char *first_char = strchr(row, '"');
             char *last_char = strrchr(row, '"');
 
             if(strcmp(first_char, "(null)") != 0 || strcmp(last_char, "(null)") != 0){
 
+                // calculate idx of the first " char
                 int name_start = first_char - row;
+
+                // calculate idx of the last " char
                 int name_end = last_char - row - 1;
 
                 // Search a row for a file name
@@ -152,39 +155,40 @@ int extract_and_search_attachments(const char *dir) {
                 strcpy(attachment_path, base_dir_name);
                 strcat(attachment_path, attachment_name);
 
+                // Reset attachment_row_found variable
+                attachment_row_found = 0;
 
-                // Change prev_row value, so it won't collide
-                // with another if statement
-                strcpy(prev_row, row);
-
-                strcpy(attachments[curr_attachment_idx], attachment_name);
+                strcpy(attachments[curr_attachment_idx], attachment_path);
             } else {
-                strcpy(attachment_name, "undefined_file");
+                strcpy(attachments[curr_attachment_idx], "undefined_file");
             }
         }
 
         if (strncmp(row, "Content-Disposition: attachment; filename=", strlen("Content-Disposition: attachment; filename=")) == 0) {
+            // Increase attachments found count
+            curr_attachment_idx++;
             // Extract attachment name
             sscanf(row, "Content-Disposition: attachment; filename=\"%[^\"]\"", attachment_name);
 
+            // Concatenate attachment name with created folder path
             strcpy(attachment_path, base_dir_name);
             strcat(attachment_path, attachment_name);
-
-            strcpy(attachments[curr_attachment_idx], attachment_name);
+            strcpy(attachments[curr_attachment_idx], attachment_path);
         } else if(strncmp(row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0){
-            strcpy(prev_row, row);
-        }
-        if(strncmp(row, "Content-Disposition: attachment;", strlen("Content-Disposition: attachment;")) == 0){
+            // Increase attachments found count
             curr_attachment_idx++;
+
+            // Set attachment_row_found to be true
+            attachment_row_found = 1;
         }
         //row_count++;
     }
 
     // Search file for each attachment found
-    // then delete it them
     for(int i = 0; i <= attachment_count - 1; i++) {
-        searchFile(attachments[i]);
-        //remove(attachments[i]);
+        if(strcmp(attachments[i], "undefined_file") != 0){
+            searchFile(attachments[i]);
+        }
     }
 
     fclose(file);
