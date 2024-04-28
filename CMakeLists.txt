@@ -13,4 +13,6 @@ add_executable(scan_eml src/main.c
         src/extractFiles.c
         include/extractFiles.h
         src/utils/base64.c
-        include/base64.h)
+        include/base64.h
+        src/utils/saveLog.c
+        include/saveLog.h)

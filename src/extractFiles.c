@@ -5,6 +5,7 @@
 #include "../include/extractFiles.h"
 #include "../include/base64.h"
 #include "../include/searchFile.h"
+#include "../include/saveLog.h";
 
 #define MAX_PATH_LENGTH 1024
 #define MAX_NAME_LENGTH 256
@@ -14,6 +15,9 @@ int count_attachments(const char *dir){
     FILE *file = fopen(dir, "rb");
     if (file == NULL) {
         printf("Error opening file\n");
+
+        saveLog(currTime());
+        saveLog(": Error opening file\n");
         return 0;
     }
 
@@ -36,6 +40,9 @@ int extract_and_search_attachments(const char *dir) {
     FILE *file = fopen(dir, "rb");
     if (file == NULL) {
         printf("Error opening file\n");
+
+        saveLog(currTime());
+        saveLog(": Error opening file\n");
         return 0;
     }
 
@@ -56,6 +63,8 @@ int extract_and_search_attachments(const char *dir) {
 
     if (fail){
         printf("\nUnable to scan attachments, probable causes:\n\t1. An error occurred.\n\t2. File was already scanned, please delete earlier created folder and try again. \n");
+        saveLog(currTime());
+        saveLog(": Error scanning attachments!\n");
         return 0;
     } else {
         // complete path string with a "/"

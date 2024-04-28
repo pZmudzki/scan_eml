@@ -4,6 +4,7 @@
 
 #include "../include/searchFile.h"
 #include "../include/validatePesel.h"
+#include "../include/saveLog.h"
 
 #define PESEL_MAX_LENGTH 11
 
@@ -35,6 +36,12 @@ void searchFile(char *dir){
 
     printf("\nFile \"%s\":\n", getFileNameFromDir(dir));
 
+    // save curr event to a file
+    saveLog(currTime());
+    saveLog(": Searching File \"");
+    saveLog(getFileNameFromDir(dir));
+    saveLog("\"\n");
+
     int pesel_found = 0;
 
     // row has 2000 space just to be safe that
@@ -65,6 +72,18 @@ void searchFile(char *dir){
             if(curr_idx == PESEL_MAX_LENGTH){
                 if(validatePesel(curr_sequence) == 1){
                     printf("Pesel found: %s Line: %d\n", curr_sequence, row_count);
+
+                    saveLog(currTime());
+                    saveLog(": Pesel found: ");
+                    saveLog(curr_sequence);
+                    saveLog(" Line: ");
+
+                    char count_string[10];
+                    sprintf(count_string, "%d", row_count);
+
+                    saveLog(count_string);
+                    saveLog("\n");
+
                     pesel_found = 1;
                 }
                 curr_idx = 0;
@@ -73,6 +92,9 @@ void searchFile(char *dir){
     }
     if(pesel_found == 0){
         printf("No pesel number was found!\n");
+
+        saveLog(currTime());
+        saveLog(": No pesel number was found!\n");
     }
     fclose(fp);
 }

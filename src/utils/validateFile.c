@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../../include/validateFile.h"
+#include "../../include/saveLog.h"
 
 int validateWindowsFile(char *filepath){
     char *eml = "lme";
@@ -35,6 +36,9 @@ int validateLinuxFile(const char *filepath){
     fp_cmd = popen(command, "r");
     if(fp_cmd == NULL){
         printf("Failed to check file format.");
+
+        saveLog(currTime());
+        saveLog(": Failed to check file format\n");
         exit(0);
     }
 
@@ -60,10 +64,16 @@ int validateLinuxFile(const char *filepath){
 int validateFile(int argc, char **argv){
     if(argc > 2) {
         printf("Please enter a file path without spaces!\n");
+
+        saveLog(currTime());
+        saveLog(": Wrong program argument format (should be without spaces)\n");
         return 0;
     }
     if(fopen(argv[1], "r") == NULL) {
         printf("File doesn't exist!\n");
+
+        saveLog(currTime());
+        saveLog(": File doesn't exist!\n");
         return 0;
     }
 
@@ -72,6 +82,9 @@ int validateFile(int argc, char **argv){
     #ifdef __linux__
         if(!validateLinuxFile(argv[1])){
             printf("Wrong file format! Please enter .eml file.\n");
+
+            saveLog(currTime());
+            saveLog(": Wrong file format!\n");
             return 0;
         }
 
@@ -80,12 +93,18 @@ int validateFile(int argc, char **argv){
     #elif _WIN32
         if(!validateWindowsFile(argv[1])){
             printf("Wrong file format! Please enter .eml file.\n");
+
+            saveLog(currTime());
+            saveLog(": Wrong file format!\n");
             return 0;
         }
 
     // Throw an error if user isn't on LINUX/WINDOWS
     #else
         printf("Your OS is incompatible!");
+
+        saveLog(currTime());
+        saveLog(": Detected incompatible OS! Please use Linux or Windows!\n");
         return 0;
     #endif
     return 1;
