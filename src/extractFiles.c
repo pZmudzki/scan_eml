@@ -5,7 +5,7 @@
 #include "../include/extractFiles.h"
 #include "../include/base64.h"
 #include "../include/searchFile.h"
-#include "../include/saveLog.h";
+#include "../include/saveLog.h"
 
 #define MAX_PATH_LENGTH 1024
 #define MAX_NAME_LENGTH 256
