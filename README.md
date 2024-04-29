@@ -1,14 +1,14 @@
-#EML Scan
+# EML Scan
 
 [TOCM]
 
-#About
+# About
 
-###Description
+### Description
 
 Project written in C that scans .eml file provided as an argument and is looking for pesel numbers (Polish ID numbers) inside. Program is compatible with Windows and Linux systems. **Attachments in .eml file have to be only .txt, because program can't read text content from docx, pdf, etc. formatted files.**
 
-###Features
+### Features
 
 - Attachment extraction with base64 decoding
 - Attachments are saved in a directory named **attachments(example.eml)**
@@ -18,7 +18,7 @@ Project written in C that scans .eml file provided as an argument and is looking
 - In eml_examples directory I provided several .eml example files
 - Every action is saved to log.txt file with current date
 
-#Installation
+# Installation
 
 1. Clone this repository:
    `$ git clone https://github.com/pZmudzki/scan_eml.git`
@@ -35,7 +35,7 @@ Project written in C that scans .eml file provided as an argument and is looking
 5. Wait until the configuration is done (Clion should display something similar to marked space on an image below) and you'll be ready to go:
    ![step 5](https://github.com/pZmudzki/scan_eml/blob/media/images/step5.png?raw=true)
 
-#Usage
+# Usage
 
 1. In the right corner of CLion window click on 3 dots icon and then "Edit...":
    ![step 6](https://github.com/pZmudzki/scan_eml/blob/media/images/step6.png?raw=true)
